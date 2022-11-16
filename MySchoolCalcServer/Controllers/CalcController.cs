@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using MySchoolCalcServer.Models;
 
 namespace MySchoolCalcServer.Controllers
 {
@@ -16,13 +17,21 @@ namespace MySchoolCalcServer.Controllers
         }
 
         [HttpGet("math/{request}")]
-        public Response Get(string request)
+        public CalcResponse Get(string request)
         {
-            object response = new DataTable().Compute(request, null);
-            if (response == null)
-                return new Response(string.Empty);
+            try
+            {
+                request = request.Replace("|", "/");
+                object response = new DataTable().Compute(request, null);
+                if (response == null)
+                    return new CalcResponse(string.Empty);
 
-            return new Response(response.ToString());
+                return new CalcResponse(response.ToString());
+            }
+            catch (Exception ex)
+            {
+                return new CalcResponse(":(");
+            }
         }
 
     }
