@@ -1,0 +1,12 @@
+﻿<div class="col-3 rz-shadow-2">
+    <RadzenText Text=@Text TextStyle="TextStyle.H6" />
+    <RadzenImage Path=@Path Style="width: 100%;" />
+</div>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public string Path { get; set; }
+}
