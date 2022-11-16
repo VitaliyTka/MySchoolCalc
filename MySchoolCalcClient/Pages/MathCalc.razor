@@ -1,0 +1,90 @@
+﻿@page "/MathCalc"
+
+<h2>Математичний калькулятор</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <RadzenLabel Text=@result class="calc-result-box rz-shadow-2 text-end p-1" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="calc-button-box rz-shadow-2 px-2 py-3">
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-2">
+                        <RadzenButton Variant="Variant.Outlined" Icon="backspace" ButtonStyle="ButtonStyle.Dark" Style="width: 80%;" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="!" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="/" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="7" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="8" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="9" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Icon="clear" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="4" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="5" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="6" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Icon="remove" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="1" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="2" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="3" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Icon="add" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="," ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Text="0" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-2">
+                        <RadzenButton Variant="Variant.Outlined" Text="=" ButtonStyle="ButtonStyle.Dark" Style="width: 80%" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string result = "10";
+}
