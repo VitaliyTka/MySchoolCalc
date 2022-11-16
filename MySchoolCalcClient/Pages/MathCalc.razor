@@ -14,6 +14,15 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <RadzenDataList Data=@calcStories TValue="string" Style="max-width: 300px; width: 100%; height: 200px; border: none; overflow: auto;" Class="w-100 rz-shadow-2">
+                <Template Context="story">
+                    <RadzenLabel Text="@(story)" />
+                </Template>
+            </RadzenDataList>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <RadzenLabel Text=@result class="calc-result-box rz-shadow-2 text-end px-1" Style="overflow-x: scroll; overflow-y: hidden;" />
         </div>
     </div>
@@ -98,14 +107,18 @@
 @code {
     private CalcResponse calcResponse = new CalcResponse("");
     private CalcRequest calcRequest = new CalcRequest("");
+    private List<string> calcStories = new List<string>();
     private string result = "";
 
     private async Task GetResult()
     {
+        string story = result + "=";
         calcRequest.body = result;
         calcRequest.body = calcRequest.body.Replace("/", "|");
         calcResponse = await CalcService.GetMathCalc(calcRequest);
         result = calcResponse.body;
+        story = story + result;
+        calcStories.Add(story);
         StateHasChanged();
     }
 
