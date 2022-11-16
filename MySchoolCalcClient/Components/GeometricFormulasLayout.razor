@@ -1,0 +1,16 @@
+﻿<div class="row justify-content-around mb-3">
+    <div class="col-6 rz-shadow-2">
+        <RadzenText Text=@Text TextStyle="TextStyle.H6" />
+    </div>
+    <div class="col-5 rz-shadow-2 text-center">
+        <RadzenImage Path=@Path />
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Text { get; set; }
+
+    [Parameter]
+    public string Path { get; set; }
+}
