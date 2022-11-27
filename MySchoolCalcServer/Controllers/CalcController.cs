@@ -194,6 +194,7 @@ namespace MySchoolCalcServer.Controllers
             try
             {
                 request = request.Replace("|", "/");
+                request = request.Replace("$", "+");
                 if (request.Contains('!'))
                 {
                     request = CalcFactorial(request);
