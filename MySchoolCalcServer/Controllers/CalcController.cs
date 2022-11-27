@@ -242,6 +242,7 @@ namespace MySchoolCalcServer.Controllers
                 }
                 string factorial = request.Substring(factorialStartIndex, factorialEndIndex - factorialStartIndex);
                 string rezFactorial = Factorial(Int32.Parse(factorial)).ToString();
+
                 request = request.Remove(factorialStartIndex, factorialEndIndex - factorialStartIndex + 1);
                 request = request.Insert(factorialStartIndex, rezFactorial);
             }
