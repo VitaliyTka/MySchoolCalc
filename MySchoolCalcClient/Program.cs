@@ -11,7 +11,7 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddHttpClient<ICalcService, CalcService>(client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7009/calc/");
+    client.BaseAddress = new Uri("https://myschoolcalcserverapi.azurewebsites.net/calc/");
 });
 
 builder.Services.AddScoped<DialogService>();
