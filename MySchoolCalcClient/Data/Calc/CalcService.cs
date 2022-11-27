@@ -20,4 +20,24 @@ public class CalcService : ICalcService
     {
         return await httpClient.GetFromJsonAsync<CalcResponse>($"math/{request.body}");
     }
+
+    public async Task<CalcResponse> GetSinCalc(CalcRequest request)
+    {
+        return await httpClient.GetFromJsonAsync<CalcResponse>($"sin/{request.body}");
+    }
+
+    public async Task<CalcResponse> GetCosCalc(CalcRequest request)
+    {
+        return await httpClient.GetFromJsonAsync<CalcResponse>($"cos/{request.body}");
+    }
+
+    public async Task<CalcResponse> GetTanCalc(CalcRequest request)
+    {
+        return await httpClient.GetFromJsonAsync<CalcResponse>($"tan/{request.body}");
+    }
+
+    public async Task<CalcResponse> GetCotCalc(CalcRequest request)
+    {
+        return await httpClient.GetFromJsonAsync<CalcResponse>($"cot/{request.body}");
+    }
 }

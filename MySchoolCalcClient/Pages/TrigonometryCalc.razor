@@ -1,0 +1,112 @@
+﻿@page "/TrigonometryCalc"
+
+@using Data.Calc;
+
+@inject ICalcService CalcService
+
+<h3>Тригонометричний калькулятор</h3>
+
+<div class="container-fluid">
+    <div class="row rz-shadow-2 py-2 my-1">
+        <div class="col-12 d-flex align-items-center" style="height: 38px;">
+            <RadzenLabel Text="Sin(" />
+            <RadzenNumeric TValue="int?" @bind-Value=@sinDegree Min="0" Max="360" ShowUpDown="false" Style="width: 30px; height: 28px; padding: 0px;" class="degree-input" />
+            <RadzenLabel Text="°)" />
+            <RadzenButton Text="=" Size="ButtonSize.ExtraSmall" Click=@CalcSin Disabled=@(sinDegree == null) />
+            @if (!string.IsNullOrEmpty(sinCalcResponse.body))
+            {
+                <RadzenLabel Text=@sinCalcResponse.body />
+            }
+        </div>
+    </div>
+    <div class="row rz-shadow-2 py-2 my-1">
+        <div class="col-12 d-flex align-items-center" style="height: 38px;">
+            <RadzenLabel Text="Cos(" />
+            <RadzenNumeric TValue="int?" @bind-Value=@cosDegree Min="0" Max="360" ShowUpDown="false" Style="width: 30px; height: 28px; padding: 0px;" class="degree-input" />
+            <RadzenLabel Text="°)" />
+            <RadzenButton Text="=" Size="ButtonSize.ExtraSmall" Click=@CalcCos Disabled=@(cosDegree == null) />
+            @if (!string.IsNullOrEmpty(cosCalcResponse.body))
+            {
+                <RadzenLabel Text=@cosCalcResponse.body />
+            }
+        </div>
+    </div>
+    <div class="row rz-shadow-2 py-2 my-1">
+        <div class="col-12 d-flex align-items-center" style="height: 38px;">
+            <RadzenLabel Text="Tan(" />
+            <RadzenNumeric TValue="int?" @bind-Value=@tanDegree Min="0" Max="360" ShowUpDown="false" Style="width: 30px; height: 28px; padding: 0px;" class="degree-input" />
+            <RadzenLabel Text="°)" />
+            <RadzenButton Text="=" Size="ButtonSize.ExtraSmall" Click=@CalcTan Disabled=@(tanDegree == null) />
+            @if (!string.IsNullOrEmpty(tanCalcResponse.body))
+            {
+                <RadzenLabel Text=@tanCalcResponse.body />
+            }
+        </div>
+    </div>
+    <div class="row rz-shadow-2 py-2 my-1">
+        <div class="col-12 d-flex align-items-center" style="height: 38px;">
+            <RadzenLabel Text="Cot(" />
+            <RadzenNumeric TValue="int?" @bind-Value=@cotDegree Min="0" Max="360" ShowUpDown="false" Style="width: 30px; height: 28px; padding: 0px;" class="degree-input" />
+            <RadzenLabel Text="°)" />
+            <RadzenButton Text="=" Size="ButtonSize.ExtraSmall" Click=@CalcCot Disabled=@(cotDegree == null) />
+            @if (!string.IsNullOrEmpty(cotCalcResponse.body))
+            {
+                <RadzenLabel Text=@cotCalcResponse.body />
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private CalcResponse sinCalcResponse = new CalcResponse("");
+    private CalcRequest sinCalcRequest = new CalcRequest("");
+    private int? sinDegree;
+
+    private CalcResponse cosCalcResponse = new CalcResponse("");
+    private CalcRequest cosCalcRequest = new CalcRequest("");
+    private int? cosDegree;
+
+    private CalcResponse tanCalcResponse = new CalcResponse("");
+    private CalcRequest tanCalcRequest = new CalcRequest("");
+    private int? tanDegree;
+
+    private CalcResponse cotCalcResponse = new CalcResponse("");
+    private CalcRequest cotCalcRequest = new CalcRequest("");
+    private int? cotDegree;
+
+    private async Task CalcSin()
+    {
+        if (sinDegree == null)
+            return;
+
+        sinCalcRequest.body = sinDegree.Value.ToString();
+        sinCalcResponse = await CalcService.GetSinCalc(sinCalcRequest);
+    }
+
+    private async Task CalcCos()
+    {
+        if (cosDegree == null)
+            return;
+
+        cosCalcRequest.body = cosDegree.Value.ToString();
+        cosCalcResponse = await CalcService.GetCosCalc(cosCalcRequest);
+    }
+
+    private async Task CalcTan()
+    {
+        if (tanDegree == null)
+            return;
+
+        tanCalcRequest.body = tanDegree.Value.ToString();
+        tanCalcResponse = await CalcService.GetTanCalc(tanCalcRequest);
+    }
+
+    private async Task CalcCot()
+    {
+        if (cotDegree == null)
+            return;
+
+        cotCalcRequest.body = cotDegree.Value.ToString();
+        cotCalcResponse = await CalcService.GetCotCalc(cotCalcRequest);
+    }
+}
