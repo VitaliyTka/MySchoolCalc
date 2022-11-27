@@ -130,3 +130,7 @@ a, .btn-link {
     border: none !important;
     padding: 0rem !important;
 }
+
+.degree-input > .rz-spinner input[type='number'], .rz-spinner input[type='text'] {
+    padding: 0px !important;
+}
