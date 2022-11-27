@@ -9,11 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddHttpClient<ICalcService, CalcService>(client =>
-{
-    client.BaseAddress = new Uri("https://myschoolcalcserverapi.azurewebsites.net/calc/");
-});
-
 builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<TooltipService>();
