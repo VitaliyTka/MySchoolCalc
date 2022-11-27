@@ -1,0 +1,56 @@
+﻿@page "/GeometricFormulas"
+@using Components;
+@using Data;
+
+<PageTitle>GeometricFormulas</PageTitle>
+
+<h2>Геометричні формули</h2>
+
+<div class="container-fluid">
+    @foreach (GeometricFormulasParameters GeometricFormulasParameter in GeometricFormulasParameters)
+    {
+        <MySchoolCalcClient.Components.GeometricFormulasLayout Path=@GeometricFormulasParameter.Path Text=@GeometricFormulasParameter.Text />
+    }
+</div>
+
+@code {
+    private List<GeometricFormulasParameters> GeometricFormulasParameters = new List<GeometricFormulasParameters>();
+
+    protected override void OnParametersSet()
+    {
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-1.jpg", "Площа трикутника через дві сторони та кут між ними"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-2.jpg", "Площа трикутника через основу та висоту"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-3.jpg", "Площа трикутника (формула Герона)"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-4.jpg", "Площа трикутника через радіус описаного кола"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-5.jpg", "Формула медіани"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-6.jpg", "Властивість бісектриси"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-7.jpg", "Формула бісектриси"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-8.jpg", "Основна властивість висот трикутника"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-9.jpg", "Формула висоти"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-10.jpg", "Теорема Піфагора"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-11.jpg", "Теорема косінусів"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-12.jpg", "Теорема синусів"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-13.jpg", "Радіус кола, вписаного у правильний трикутник"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-14.jpg", "Радіус кола, описаного біля правильного трикутника"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-15.jpg", "Радіус кола, вписаного в прямокутний трикутник"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-16.jpg", "Радіус кола, описаного навколо прямокутного трикутника"));
+        GeometricFormulasParameters.Add(
+            new GeometricFormulasParameters("img/geom-img/geom-img-17.jpg", "Властивість висоти, опущеної на гіпотенузу прямокутного трикутника"));
+    }
+}

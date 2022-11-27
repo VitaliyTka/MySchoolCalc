@@ -1,13 +1,24 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using MySchoolCalcClient.Data;
+using MySchoolCalcClient.Data.Calc;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddHttpClient<ICalcService, CalcService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7009/calc/");
+});
+
+builder.Services.AddScoped<DialogService>();
+builder.Services.AddScoped<NotificationService>();
+builder.Services.AddScoped<TooltipService>();
+builder.Services.AddScoped<ContextMenuService>();
+
 
 var app = builder.Build();
 

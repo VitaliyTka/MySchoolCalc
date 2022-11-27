@@ -1,0 +1,201 @@
+﻿@page "/MathCalc"
+
+@using Data.Calc;
+
+@inject ICalcService CalcService
+
+<h2>Математичний калькулятор</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <RadzenDataList Data=@calcStories TValue="string" Style="max-width: 300px; width: 100%; height: 200px; border: none; overflow: auto;" Class="w-100 rz-shadow-2">
+                <Template Context="story">
+                    <RadzenLabel Text="@(story)" />
+                </Template>
+            </RadzenDataList>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <RadzenLabel Text=@result class="calc-result-box rz-shadow-2 text-end px-1" Style="overflow-x: scroll; overflow-y: hidden;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="calc-button-box rz-shadow-2 px-2 py-3">
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@Erase Icon="backspace" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@GetResult Text="=" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddFactorial Text="!" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddDivide Text="/" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddSeven Text="7" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddEight Text ="8" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddNine Text="9" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddMultiply Icon ="clear" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddFour Text="4" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddFive Text="5" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddSix Text ="6" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddMinus Icon="remove" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddOne Text="1" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddTwo Text="2" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddThree Text="3" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddPlus Icon="add" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+                <div class="calc-button-row my-2">
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddDot Text="." ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddZero Text ="0" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddOpenBracket Text="(" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                    <div class="calc-button-col-1">
+                        <RadzenButton Variant="Variant.Outlined" Click=@AddCloseBracket Text=")" ButtonStyle="ButtonStyle.Dark" class="rz-border-radius-10 rz-shadow-6" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private CalcResponse calcResponse = new CalcResponse("");
+    private CalcRequest calcRequest = new CalcRequest("");
+    private List<string> calcStories = new List<string>();
+    private string result = "";
+
+    private async Task GetResult()
+    {
+        string story = result + "=";
+        calcRequest.body = result;
+        calcRequest.body = calcRequest.body.Replace("/", "|");
+        calcResponse = await CalcService.GetMathCalc(calcRequest);
+        result = calcResponse.body;
+        story = story + result;
+        calcStories.Add(story);
+        StateHasChanged();
+    }
+
+    private void AddZero()
+    {
+        result = result + "0";
+    }
+    private void AddOne()
+    {
+        result = result + "1";
+    }
+    private void AddTwo()
+    {
+        result = result + "2";
+    }
+    private void AddThree()
+    {
+        result = result + "3";
+    }
+    private void AddFour()
+    {
+        result = result + "4";
+    }
+    private void AddFive()
+    {
+        result = result + "5";
+    }
+    private void AddSix()
+    {
+        result = result + "6";
+    }
+    private void AddSeven()
+    {
+        result = result + "7";
+    }
+    private void AddEight()
+    {
+        result = result + "8";
+    }
+    private void AddNine()
+    {
+        result = result + "9";
+    }
+    private void AddOpenBracket()
+    {
+        result = result + "(";
+    }
+    private void AddCloseBracket()
+    {
+        result = result + ")";
+    }
+    private void AddDot()
+    {
+        result = result + ".";
+    }
+    private void AddPlus()
+    {
+        result = result + "+";
+    }
+    private void AddMinus()
+    {
+        result = result + "-";
+    }
+    private void AddMultiply()
+    {
+        result = result + "*";
+    }
+    private void AddDivide()
+    {
+        result = result + "/";
+    }
+    private void AddFactorial()
+    {
+        result = result + "!";
+    }
+    private void Erase()
+    {
+        result = result.Remove(result.Length - 1);
+    }
+}
