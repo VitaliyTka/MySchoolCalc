@@ -111,6 +111,7 @@
         string story = result + "=";
         calcRequest.body = result;
         calcRequest.body = calcRequest.body.Replace("/", "|");
+        calcRequest.body = calcRequest.body.Replace("+", "$");
         calcResponse = await CalcService.GetMathCalc(calcRequest);
         result = calcResponse.body;
         story = story + result;
